@@ -102,7 +102,6 @@
         </div>
     </main>
 
-    <?php include 'includes/newsletter.php'; ?>
     <?php include 'includes/footer.php'; ?>
 </body>
 

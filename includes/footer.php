@@ -32,15 +32,9 @@
         </div>
 
         <div class="footer-column">
-            <h3><?=$t['street_furniture']?></h3>
+            <h3><?=$t['planters']?></h3>
             <ul>
-                <li><a href="page-bike-stands.php?lang=<?=$lang?>"><?=$t['bike_stands']?></a></li>
-                <li><a href="page-bollards.php?lang=<?=$lang?>"><?=$t['bollards']?></a></li>
-                <li><a href="page-wastebins.php?lang=<?=$lang?>"><?=$t['wastebins']?></a></li>
-                <li><a href="page-ashtrays.php?lang=<?=$lang?>"><?=$t['ashtrays']?></a></li>
-                <li><a href="page-street-furniture.php?lang=<?=$lang?>"><?=$t['street_furniture']?></a></li>
                 <li><a href="products-planters.php?lang=<?=$lang?>"><?=$t['planters']?></a></li>
-                <li><a href="page-sand-containers.php?lang=<?=$lang?>"><?=$t['sand_containers']?></a></li>
             </ul>
         </div>
 
@@ -48,11 +42,6 @@
             <h3><?=$t['about']?></h3>
             <ul>
                 <li><a href="page-history.php?lang=<?=$lang?>"><?=$t['our_history']?></a></li>
-                <li><a href="page-sustainability.php?lang=<?=$lang?>"><?=$t['sustainability']?></a></li>
-                <li><a href="page-subcontracting.php?lang=<?=$lang?>"><?=$t['subcontracting']?></a></li>
-                <li><a href="page-careers.php?lang=<?=$lang?>"><?=$t['join_team']?></a></li>
-                <li><a href="page-environmental-policy.php?lang=<?=$lang?>"><?=$t['environmental_policy']?></a></li>
-                <li><a href="page-quality-policy.php?lang=<?=$lang?>"><?=$t['quality_policy']?></a></li>
                 <li><a href="page-terms.php?lang=<?=$lang?>"><?=$t['terms']?></a></li>
                 <li><a href="page-contact.php?lang=<?=$lang?>"><?=$t['contact_us']?></a></li>
             </ul>
@@ -103,39 +92,27 @@ if (menuOverlay) {
     });
 }
 
-// Newsletter form handling
-const submitBtn = document.querySelector('.submit-btn');
-if (submitBtn) {
-    submitBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        const email = document.querySelector('.email-input input').value;
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-
-        if (!email) {
-            alert(<?=json_encode($t['alert_email'])?>);
-            return;
+// Flag tooltips (mobile click toggle)
+document.querySelectorAll('.flag-wrapper').forEach(function(wrapper) {
+    wrapper.addEventListener('click', function(e) {
+        var isTouch = !window.matchMedia('(hover: hover)').matches;
+        if (isTouch) {
+            e.stopPropagation();
+            var wasActive = this.classList.contains('active');
+            document.querySelectorAll('.flag-wrapper.active').forEach(function(w) {
+                w.classList.remove('active');
+            });
+            if (!wasActive) {
+                this.classList.add('active');
+            }
         }
-
-        if (checkboxes.length === 0) {
-            alert(<?=json_encode($t['alert_checkbox'])?>);
-            return;
-        }
-
-        alert(<?=json_encode($t['alert_thanks'])?>);
     });
-}
-
-// Search functionality
-const searchProducts = <?=json_encode([
-    ['name_en' => 'Flagpoles Original', 'name_ar' => 'أعمدة الأعلام الأصلية', 'category_en' => 'Flagpoles', 'category_ar' => 'أعمدة الأعلام', 'url' => 'detail-flagpoles.php', 'artno' => '100600'],
-    ['name_en' => 'Lighting Column 3-6M', 'name_ar' => 'عمود إنارة 3-6 متر', 'category_en' => 'Lighting Columns', 'category_ar' => 'أعمدة الإنارة', 'url' => 'detail-lighting-columns.php', 'artno' => '300350'],
-    ['name_en' => 'Urban Planter', 'name_ar' => 'أحواض زراعة حضرية', 'category_en' => 'Planters', 'category_ar' => 'أحواض الزراعة', 'url' => 'detail-planters.php', 'artno' => 'PL-100'],
-    ['name_en' => 'Signage Standard', 'name_ar' => 'اللافتات القياسية', 'category_en' => 'Signage', 'category_ar' => 'اللافتات', 'url' => 'detail-signage.php', 'artno' => 'SG-SP100'],
-    ['name_en' => 'Flagpoles', 'name_ar' => 'أعمدة الأعلام', 'category_en' => 'Products', 'category_ar' => 'المنتجات', 'url' => 'products-flagpoles.php', 'artno' => ''],
-    ['name_en' => 'Lighting Columns', 'name_ar' => 'أعمدة الإنارة', 'category_en' => 'Products', 'category_ar' => 'المنتجات', 'url' => 'products-lighting-columns.php', 'artno' => ''],
-    ['name_en' => 'Planters', 'name_ar' => 'أحواض الزراعة', 'category_en' => 'Products', 'category_ar' => 'المنتجات', 'url' => 'products-planters.php', 'artno' => ''],
-    ['name_en' => 'Signage', 'name_ar' => 'اللافتات', 'category_en' => 'Products', 'category_ar' => 'المنتجات', 'url' => 'products-signage.php', 'artno' => ''],
-])?>;
+});
+document.addEventListener('click', function() {
+    document.querySelectorAll('.flag-wrapper.active').forEach(function(w) {
+        w.classList.remove('active');
+    });
+});
 
 const currentLang = <?=json_encode($lang)?>;
 const noResultsText = <?=json_encode($t['no_results'])?>;

@@ -28,7 +28,7 @@
         </div>
         <a href="index.php?lang=<?=$lang?>" class="back-link"><?=$t['back_to_home']?></a>
     </main>
-    <?php include 'includes/newsletter.php'; ?>
+    
     <?php include 'includes/footer.php'; ?>
 </body>
 </html>
