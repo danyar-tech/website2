@@ -128,6 +128,12 @@
             </a>
     
         </div>
+
+        <div class="hero-badges">
+            <img src="assets/images/isoCertified.png" alt="ISO Certified">
+            <img src="assets/images/madeinsweden.png" alt="Made in Sweden">
+            <img src="assets/images/10years.png" alt="10 Years Guarantee">
+        </div>
     
         <div class="scroll-indicator"></div>
     </section>
@@ -150,7 +156,6 @@
         </a>
     </section>
 
-    <?php include 'includes/newsletter.php'; ?>
     <?php include 'includes/footer.php'; ?>
 
     <script>

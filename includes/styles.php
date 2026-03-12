@@ -18,13 +18,14 @@
         top: 0;
         left: 0;
         right: 0;
-        background: white;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         padding: 20px 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         z-index: 1000;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
 
     .logo {
@@ -653,9 +654,16 @@
     /* The magic — fixed height hides wrapped flags */
     flex-wrap: wrap;
     height: 25px;
-    overflow: hidden;
+    overflow: visible;
     flex-shrink: 1;
     min-width: 0;
+}
+
+.flag-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
 .flag-img {
@@ -663,6 +671,89 @@
     width: auto;
     object-fit: contain;
     flex-shrink: 0;
+}
+
+.flag-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: nowrap;
+    z-index: 1100;
+    pointer-events: none;
+}
+
+.flag-tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.85);
+}
+
+/* Desktop: show on hover */
+@media (hover: hover) {
+    .flag-wrapper:hover .flag-tooltip {
+        display: block;
+    }
+}
+
+/* Mobile: show on click via .active class */
+.flag-wrapper.active .flag-tooltip {
+    display: block;
+}
+
+/* Hero badges */
+.hero-badges {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    z-index: 10;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 12px 16px;
+    border-radius: 10px;
+}
+
+.hero-badges img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+[dir="rtl"] .hero-badges {
+    right: auto;
+    left: 40px;
+}
+
+@media (max-width: 768px) {
+    .hero-badges {
+        bottom: 20px;
+        right: 20px;
+        gap: 8px;
+        padding: 8px 12px;
+    }
+    .hero-badges img {
+        height: 35px;
+    }
+    [dir="rtl"] .hero-badges {
+        right: auto;
+        left: 20px;
+    }
 }
 
 </style>

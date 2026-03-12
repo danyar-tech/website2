@@ -101,43 +101,8 @@
                 <div class="product-category"><?=$t['planters']?></div>
             </a>
         </div>
-
-        <div class="accessories-section">
-            <h2><?=$t['accessories']?></h2>
-            <div class="accessories-grid">
-                <div class="accessory-item">
-                    <div class="accessory-image">
-                        <img src="https://picsum.photos/300/300?random=40" alt="<?=$t['weather_resistant']?>">
-                    </div>
-                    <h3><?=$t['weather_resistant']?></h3>
-                    <p><?=$t['weather_resistant_desc']?></p>
-                </div>
-                <div class="accessory-item">
-                    <div class="accessory-image">
-                        <img src="https://picsum.photos/300/300?random=41" alt="<?=$t['versatile_design']?>">
-                    </div>
-                    <h3><?=$t['versatile_design']?></h3>
-                    <p><?=$t['versatile_design_desc']?></p>
-                </div>
-                <div class="accessory-item">
-                    <div class="accessory-image">
-                        <img src="https://picsum.photos/300/300?random=42" alt="<?=$t['easy_maintenance']?>">
-                    </div>
-                    <h3><?=$t['easy_maintenance']?></h3>
-                    <p><?=$t['easy_maintenance_desc']?></p>
-                </div>
-                <div class="accessory-item">
-                    <div class="accessory-image">
-                        <img src="https://picsum.photos/300/300?random=43" alt="<?=$t['sustainable']?>">
-                    </div>
-                    <h3><?=$t['sustainable']?></h3>
-                    <p><?=$t['sustainable_desc']?></p>
-                </div>
-            </div>
-        </div>
     </main>
 
-    <?php include 'includes/newsletter.php'; ?>
     <?php include 'includes/footer.php'; ?>
 </body>
 

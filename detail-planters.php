@@ -356,7 +356,6 @@ $specs = $current_product_data['specs'];
         </div>
     </main>
 
-    <?php include 'includes/newsletter.php'; ?>
     <?php include 'includes/footer.php'; ?>
 
     <script>
